@@ -2,17 +2,19 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DemoApp.Pages.ManageToDoPage"
-             Title="Manage To Do">
-    <ContentPage.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="0,5,0,5"/>
-        </Style>
-    </ContentPage.Resources>
-    <VerticalStackLayout Margin="20">
-        <Label Text="what do you want to do"/>
-        <Entry Text="{ Binding Path=Todo.TodoName}" Placeholder="Enter Item"/>
-        <Button Text="Save" Clicked="OnSaveButtonClicked"/>
-        <Button Text="Delete" Clicked="OnDeleteButtonClicked"/>
-        <Button Text="Cancel" Clicked="OncancelButtonClicked"/>
-    </VerticalStackLayout>
+             Title="Manage To Dos">
+
+    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,*,*" ColumnSpacing="5">
+        <TableView Intent="Data" Grid.Row="0" Grid.ColumnSpan="3">
+            <TableRoot>
+                <TableSection Title="What do you want to do ?">
+                    <EntryCell Text="{ Binding Path=Todo.TodoName}" Placeholder="Enter Item"/>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+        <Button Text="Save" Grid.Row="1" Grid.Column="0" Clicked="OnSaveButtonClicked" Margin="10,0" />
+        <Button Text="Delete"  Grid.Row="1" Grid.Column="1" Clicked="OnDeleteButtonClicked" />
+        <Button Text="Cancel"  Grid.Row="1" Grid.Column="2" Clicked="OncancelButtonClicked" Margin="10,0"/>
+    </Grid>
+
 </ContentPage>
